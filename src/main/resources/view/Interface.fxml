@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="ANCHOR" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #2a2e37;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.moshe.keam.controllers.InterfaceController">
+   <children>
+      <ImageView fx:id="IMAGE" fitHeight="150.0" fitWidth="200.0" layoutX="777.0" layoutY="314.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="LABEL" contentDisplay="CENTER" layoutX="573.0" layoutY="357.0" opacity="0.0" prefHeight="44.0" prefWidth="194.0" text="Game" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="28.0" />
+         </font></Label>
+      <ImageView fitHeight="71.0" fitWidth="77.0" layoutX="14.0" layoutY="715.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/add.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="BUTTON" layoutX="24.0" layoutY="725.0" mnemonicParsing="false" onAction="#addGame" opacity="0.0" prefHeight="50.0" prefWidth="49.0" text="Button">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <FlowPane fx:id="FLOWPANE" layoutX="14.0" layoutY="14.0" prefHeight="687.0" prefWidth="1256.0" />
+   </children>
+</AnchorPane>
