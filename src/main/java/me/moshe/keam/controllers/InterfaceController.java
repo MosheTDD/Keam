@@ -3,6 +3,8 @@ package me.moshe.keam.controllers;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -45,6 +47,8 @@ public class InterfaceController implements Initializable {
 
     public static Label staticLabel;
     public static ImageView staticImage;
+    public static FlowPane staticFlowpane;
+
 
     @FXML
     public void addGame() {
@@ -66,12 +70,20 @@ public class InterfaceController implements Initializable {
         chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Executable Files", "*.exe"));
         chooser.setTitle("Please select a game...");
         file = chooser.showOpenDialog(stage.getOwner());
-        if(file == null)return;
+        if(file == null){
+            AlertBox.showAlert("File is null!", "Couldn't find file");
+            return;
+        }
         staticLabel.setText(file.getName());
         ImageIcon icon = (ImageIcon) FileSystemView.getFileSystemView().getSystemIcon(file);
         BufferedImage bufferedImage = (BufferedImage) icon.getImage();
         Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-        staticImage.setImage(image);
+        ImageView imageView = new ImageView(image);
+        staticFlowpane.setPadding(new Insets(50, 50, 50, 100));
+        Rectangle2D viewport = new Rectangle2D(0, 0, image.getWidth(), image.getHeight());
+        imageView.setViewport(viewport);
+
+        staticFlowpane.getChildren().add(new ImageView(imageView.getImage()));
     }
 
     public static String stripExtension(String str){
@@ -88,5 +100,6 @@ public class InterfaceController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         staticLabel = LABEL;
         staticImage = IMAGE;
+        staticFlowpane = FLOWPANE;
     }
 }
